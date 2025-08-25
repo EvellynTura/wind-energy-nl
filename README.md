@@ -1,44 +1,39 @@
-# wind-energy-nl
-Comparative study of onshore vs. offshore wind energy in the Netherlands, analyzing efficiency, costs, and environmental impacts using data from official sources such as RVO, IEA, and EU reports.
+1️⃣ Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-🌍 Offshore vs Onshore Wind Energy in the Netherlands
+# Optional: improve plot style
+plt.style.use("seaborn-v0_8")
 
- 📌 About
-This project is a comparative study of **offshore (sea-based)** and **onshore (land-based)** wind energy in the Netherlands.  
-It explores **efficiency, costs, and environmental impacts** using data from official sources such as RVO, IEA, and EU reports.
+2️⃣ Example data (replace with your official datasets)
+data = {
+    "year": [2018, 2019, 2020, 2021, 2022]*2,
+    "type": ["Onshore"]*5 + ["Offshore"]*5,
+    "capacity_factor": [28, 30, 29, 31, 32, 40, 42, 41, 43, 44],
+    "cost_per_mwh": [60, 58, 57, 56, 55, 90, 88, 87, 85, 84]
+}
 
- 🎯 Objectives
-- Compare energy production efficiency  
-- Evaluate installation and maintenance costs  
-- Assess environmental and social impacts  
-- Understand each modality’s role in the Dutch energy transition  
+df = pd.DataFrame(data)
 
- 📊 Methodology
-- Data collection from **official institutions**  
-- Data cleaning & preparation with Python  
-- Statistical and visual analysis  
-- Results presented in **graphs, tables, and reports**  
+# 3️⃣ Boxplot: Capacity Factor Comparison
+plt.figure(figsize=(8,5))
+sns.boxplot(data=df, x="type", y="capacity_factor", palette="Set2")
+plt.title("Capacity Factor Comparison: Onshore vs Offshore")
+plt.ylabel("Capacity Factor (%)")
+plt.show()
 
- 🗂 Repository Structure
-- `data/` → Official datasets  
-- `notebooks/` → Jupyter notebooks with analysis  
-- `visualizations/` → Charts and dashboards  
-- `docs/` → Reports and references  
+4️⃣ Line chart: Cost Evolution Over the Years
+plt.figure(figsize=(10,6))
+sns.lineplot(data=df, x="year", y="cost_per_mwh", hue="type", marker="o")
+plt.title("Cost Evolution of Wind Energy in the Netherlands")
+plt.ylabel("Cost per MWh (€)")
+plt.show()
 
- 🚀 Tools & Technologies
-- Python (Pandas, Matplotlib, Plotly, Seaborn)  
-- Jupyter Notebook  
-- Git & GitHub  
+5️⃣ Statistical Summary Table
+summary = df.groupby("type")[["capacity_factor", "cost_per_mwh"]].describe()
+display(summary)
 
- 📈 Results (Preview)
-- Offshore wind shows higher **capacity factor**, but installation and maintenance are more expensive  
-- Onshore wind is more affordable but less efficient  
-- Both play a crucial role in Dutch **sustainability and decarbonization goals**  
-
- 📚 References
-- [Netherlands Enterprise Agency (RVO)](https://english.rvo.nl/)  
-- [International Energy Agency (IEA)](https://www.iea.org/)  
-- [European Environment Agency (EEA)](https://www.eea.europa.eu/)  
-
-✨This project is part of my portfolio, showcasing data analysis, research, and visualization applied to renewable energy.
+6️⃣ Export summary to CSV (optional)
+summary.to_csv("wind_energy_summary.csv")
 
