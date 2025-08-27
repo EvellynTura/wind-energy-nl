@@ -1,39 +1,28 @@
-1️⃣ Import libraries
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-# Optional: improve plot style
-plt.style.use("seaborn-v0_8")
+🌱 SUSTAINABLE WIND ENERGY IN THE NETHERLANDS:
 
-2️⃣ Example data (replace with your official datasets)
-data = {
-    "year": [2018, 2019, 2020, 2021, 2022]*2,
-    "type": ["Onshore"]*5 + ["Offshore"]*5,
-    "capacity_factor": [28, 30, 29, 31, 32, 40, 42, 41, 43, 44],
-    "cost_per_mwh": [60, 58, 57, 56, 55, 90, 88, 87, 85, 84]
-}
+The Netherlands is one of the leading countries in the transition to renewable energy, with a strong focus on wind power, both onshore and offshore.
+This project analyzes data on the capacity factor (efficiency) and the cost evolution of wind energy generation in the country between 2018 and 2022.
 
-df = pd.DataFrame(data)
+⚡ EFFICIENCY COMPARISON: Onshore vs Offshore
 
-# 3️⃣ Boxplot: Capacity Factor Comparison
-plt.figure(figsize=(8,5))
-sns.boxplot(data=df, x="type", y="capacity_factor", palette="Set2")
-plt.title("Capacity Factor Comparison: Onshore vs Offshore")
-plt.ylabel("Capacity Factor (%)")
-plt.show()
+The capacity factor measures how efficiently a turbine generates electricity compared to its maximum potential.
+The chart below shows that offshore wind farms consistently perform better than onshore, reaching capacity factors of around 42–44%, while onshore farms remain closer to 28–32%.
 
-4️⃣ Line chart: Cost Evolution Over the Years
-plt.figure(figsize=(10,6))
-sns.lineplot(data=df, x="year", y="cost_per_mwh", hue="type", marker="o")
-plt.title("Cost Evolution of Wind Energy in the Netherlands")
-plt.ylabel("Cost per MWh (€)")
-plt.show()
+➡️ This highlights the strong potential of offshore wind energy, taking advantage of stronger and more stable winds in the North Sea.
 
-5️⃣ Statistical Summary Table
-summary = df.groupby("type")[["capacity_factor", "cost_per_mwh"]].describe()
-display(summary)
+💶 COST EVOLUTION:
 
-6️⃣ Export summary to CSV (optional)
-summary.to_csv("wind_energy_summary.csv")
+The analysis of cost per MWh shows a downward trend for both types of generation:
 
+Onshore: decreased from ~€60 to €55/MWh between 2018 and 2022.
+
+Offshore: decreased from ~€90 to €84/MWh over the same period.
+
+➡️ Although offshore projects remain more expensive, the downward trend shows that the technology is becoming increasingly competitive.
+
+CONCLUSION:
+The Netherlands is moving towards a cleaner energy mix, with offshore wind playing a key role.
+Higher efficiency and falling costs reinforce the strategic importance of wind power in achieving climate neutrality by 2050.
+
+📊 This repository demonstrates, through Python data analysis and visualizations, how to tell a compelling data-driven story about sustainable energy.
